@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:tuxshare/home_screen/transfer_button.dart';
+import 'package:tuxshare/io/connection.dart';
 import 'package:tuxshare/universal_widgets/logotext.dart';
 import 'package:tuxshare/universal_widgets/tux_icon_button.dart';
 
@@ -49,20 +51,23 @@ class AdaptiveAppBar extends StatelessWidget{
               TransferButton(
                 onPressed: () {},
                 iconData: Icons.send_time_extension_rounded,
-                color: Colors.blue,
+                color: Colors.blue.withOpacity(.5),
                 text: "Send",
+                enabled: connected,
               ),
               TransferButton(
                 onPressed: () {},
                 iconData: Icons.open_with_rounded,
-                color: Colors.blue,
+                color: Colors.blue.withOpacity(.5),
                 text: "Receive",
+                enabled: connected,
               ),
               TransferButton(
                 onPressed: () {},
                 iconData: Icons.file_copy_rounded,
-                color: Colors.blue,
+                color: Colors.blue.withOpacity(.5),
                 text: "Files",
+                enabled: connected,
               ),
             ],
           ),

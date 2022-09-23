@@ -1,8 +1,11 @@
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:tuxshare/home_screen/adaptive_app_bar.dart';
 import 'package:tuxshare/home_screen/transfer_panel.dart';
 import 'package:tuxshare/io/resource_provider.dart';
+
+import '../io/connection.dart';
 
 class HomeScreen extends StatelessWidget{
   const HomeScreen({super.key});
@@ -10,7 +13,9 @@ class HomeScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(colors: [Colors.white, Colors.blue], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+      ),
       child: Stack(
         children: [
           SingleChildScrollView(
@@ -28,19 +33,17 @@ class HomeScreen extends StatelessWidget{
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Image(
+                children: [
+                  const Image(
                     image: android,
                     width: 64,
                     height: 64,
                   ),
-                  Icon(
-                    // Icons.not_interested_outlined,
-                    // color: Colors.grey,
-                    Icons.published_with_changes_outlined,
-                    color: Colors.blue,
-                  ),
-                  Image(
+                  if(!connected)
+                    Lottie.asset('assets/93235-no-connection.json', width: 60),
+                  if(connected)
+                    Lottie.asset('assets/114586-wifi-connecting.json', width: 100),
+                  const Image(
                     image: tux,
                     width: 64,
                     height: 64,
